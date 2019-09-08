@@ -77,18 +77,30 @@ let inventory = [
 // The dealer can't recall the information for a car with an id of 33 on his lot. 
 // Help the dealer find out which car has an id of 33 by logging the car's year, make, and model in the console log provided to you below:
 
-let year, make, model;
+// let year, make, model;
 
+//   for (let i = 0; i < inventory.length; i++) {
+//     if (inventory[i].id == 33) {
+//       year = inventory[i].car_year;
+//       make = inventory[i].car_make;
+//       model = inventory[i].car_model;
+//     }
+//   }
+
+//   console.log(`Car 33 is a ${year} ${make} ${model}`);
+
+const searchId = (vehicleId) => {
+  //for loop for the "inventory" array
   for (let i = 0; i < inventory.length; i++) {
-    if (inventory[i].id == 33) {
-      year = inventory[i].car_year;
-      make = inventory[i].car_make;
-      model = inventory[i].car_model;
+    //if statement for when the value of key "id" equals the number that is input (the number of the car)
+    if (inventory[i].id === vehicleId) {
+      // print output indicating the car year make and model using string calls from array: "inventory"
+      console.log(`Car ${inventory[i].id} is a ${inventory[i]['car_year']} ${inventory[i]['car_make']} ${inventory[i]['car_model']}`)
     }
   }
+}
+searchId(33);
 
-  console.log(`Car 33 is a ${year} ${make} ${model}`);
-  
 // ==== Challenge 2 ====
 // The dealer needs the information on the last car in their inventory.  
 // What is the make and model of the last car in the inventory?  Log the make and model into the console.
@@ -96,6 +108,22 @@ let year, make, model;
 // let lastCar = inventory[inventory.length-1] //last car is inventory at 0
 // console.log(`${lastCar.car_make}, ${lastCar.car_model}`); //log output: car make + car model
 
+const lastVechicle = () => {
+  //setting inventory.length to a variable...? why though
+  let inventoryLength = inventory.length;
+  //for loop for "inventory" array
+  for (let i = 0; i < inventoryLength; i++) {
+    //"item" variable made to equal array: "inventory" at "i"...? why though
+    let item = inventory[i];
+
+    // Check if last iteration of the array
+    if((i + 1) == (inventoryLength)) {
+      console.log(`${item['car_make']} ${item['car_model']}`);
+    }
+  }
+
+}
+lastVechicle();
 
 // // ==== Challenge 3 ====
 // // The marketing team wants the car models listed alphabetically on the website. Sort all the car model names into alphabetical order and log the results in the console
@@ -103,22 +131,105 @@ let year, make, model;
 // let carModelsSorted = [];
 // console.log();
 
+const alphacarmodels = () => {
+  //create new space "array" for sorted carModels
+  let carModels = [];
+  for (let i=0; i < inventory.length; i++) {
+    //create new new space to store generic values
+    let models = inventory[i]['car_model'];
+    //sort models and push to new new array;
+    carModels.sort().push(models);
+    }
+    console.log(carModels);
+}
+
+alphacarmodels();
 
 // // ==== Challenge 4 ====
-// // The accounting team needs all the years from every car on the lot. Create a new array from the dealer data containing only the car years and log the result in the console.
+// // The accounting team needs all the years from every car on the lot. 
+// Create a new array from the dealer data containing only the car years and log the result in the console.
 // let carYears = [];
 // console.log();
 
+//loop inventory array 
+//create new array with just the years of the cars
+//create a new array with the years sorted for fun...since you just learned that with .sort
+
+const caryearsList = () => {
+  //create empty array to fit cars into
+  let carYears = [];
+  //loop inventory to pull years
+  for (let i = 0; i < inventory.length; i++) {
+    // store values in years
+    let years = inventory[i]['car_year'];
+    // push values to new array
+    carYears.push(years);
+  }
+  console.log(carYears);
+}
+//call variable for array
+caryearsList();
+
+
+
 // // ==== Challenge 5 ====
-// // The car lot manager needs to find out how many cars are older than the year 2000. Using the carYears array you just created, find out how many cars were made before the year 2000 by populating the array oldCars and logging it's length.
+// // The car lot manager needs to find out how many cars are older than the year 2000. 
+// Using the carYears array you just created, find out how many cars were made before the year 2000 
+// by populating the array oldCars and logging it's length.
 // let oldCars = [];
 // console.log();
 
+      //create new "oldCars" array container
+      //loop carYears
+      //store years values in years array
+      //use "if statement" and  "math functions" to filter for years less than 2000
+        //push cars in this array to "oldCars" array
+      //print "oldCars"
+
+const oldCars = () => {
+  let oldCars = [];
+  for (let i = 0; i < inventory.length; i++){
+    let years = inventory[i]['car_year'];
+    if (years < 2000) {
+      oldCars.push(years);
+    }
+  }
+  console.log(oldCars);
+}
+
+oldCars();
+
+
 // // ==== Challenge 6 ====
-// // A buyer is interested in seeing only BMW and Audi cars within the inventory. Return an array that only contains BMW and Audi cars.  Once you have populated the BMWAndAudi array, use JSON.stringify() to show the results of the array in the console.
+// // A buyer is interested in seeing only BMW and Audi cars within the inventory. 
+// Return an array that only contains BMW and Audi cars.  
+// Once you have populated the BMWAndAudi array, use JSON.stringify() to show the results of the array in the console.
 // let BMWAndAudi = [];
 // console.log();
 
-function add(){
-  const var1 = "1"
-}
+      //define variable BMWAndAudi
+      // create new array container for BMWAndAudi within that
+      // loop inventory
+      // store memory of car_make in new variable/array? (how to phrase)
+      // if statement showing || or operator and "lowercase function" to sort BMW and Audi cars
+        // pushing those cars to the BMW and Audi container
+      // ??? Use JSON.stringify(console.log(bmwAndAudi)) to print
+      // call function to print array
+
+      const specificVehicles = () => {
+        bmwAndAudi = [];
+      
+        for (let i = 0; i < inventory.length; i++) {
+      
+          if (inventory[i]['car_make'].toLowerCase() === 'audi' || inventory[i]['car_make'].toLowerCase() === 'bmw') {
+            bmwAndAudi.push(inventory[i]);
+          }
+        }
+        JSON.stringify(console.log(bmwAndAudi));
+      }
+      
+      specificVehicles()
+
+
+
+
